@@ -12,13 +12,14 @@ const gulp 					 = require('gulp'),
 			autoprefixer   = require('gulp-autoprefixer'),
 			notify         = require("gulp-notify");
 
-gulp.task('scripts', function() {
-	return gulp.src('app/js/main.js')
-	.pipe(concat('scripts.min.js'))
+/*gulp.task('scripts', function() {
+	return gulp.src('app/js/script.js')
+	// // // .pipe(concat('script.min.js')) // - if there are more then one js file
+	// .pipe(rename({suffix: '.min', prefix : ''})) // - if ther is only 1 js file
 	// .pipe(uglify())
-	.pipe(gulp.dest('app/js'))
+	// .pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({stream: true}));
-});
+});*/
 
 gulp.task('browser-sync', function() {
 	browserSync({
@@ -32,16 +33,17 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function() {
 	return gulp.src('app/sass/**/*.sass')
 	.pipe(sass().on("error", notify.onError()))
-	.pipe(rename({suffix: '.min', prefix : ''}))
+	// .pipe(rename({suffix: '.min', prefix : ''}))
 	.pipe(autoprefixer(['last 15 versions']))
 	// .pipe(cleanCSS())
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('watch', ['sass', 'scripts', 'browser-sync'], function() {
-	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['app/js/main.js'], ['scripts']);
+gulp.task('watch', ['sass'/*, 'scripts'*/, 'browser-sync'], function() {
+	gulp.watch('app/sass/*.sass', ['sass']);
+	// gulp.watch(['app/js/script.js'], ['scripts']);
+	gulp.watch(['app/js/*.js'], browserSync.reload);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 
