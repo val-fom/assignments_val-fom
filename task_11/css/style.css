@@ -756,6 +756,12 @@ input[type=range]::-webkit-slider-runnable-track {
 	margin-right: 3.1rem;
 }
 
+.inner.full-name,
+.inner.email,
+.inner.password {
+	width: 30rem;
+}
+
 .payment input {
 	font-size: 1.3rem;
 	color: #6e768f;
