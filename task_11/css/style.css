@@ -437,6 +437,14 @@ legend small {
 	transition: opacity 0.3s;
 }
 
+.button__remove {
+	border: none;
+	background: transparent;
+	color: inherit;
+	padding: 0;
+	font-size: inherit;
+}
+
 .upload-table td:last-child, .upload-table th:last-child {
 	text-align: center;
 }
@@ -746,6 +754,12 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .payment .inner {
 	margin-right: 3.1rem;
+}
+
+.inner.full-name,
+.inner.email,
+.inner.password {
+	width: 30rem;
 }
 
 .payment input {
