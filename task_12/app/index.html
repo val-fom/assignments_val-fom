@@ -6,9 +6,36 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<header class="header"></header>
-	<main class="main"></main>
-	<footer class="footer"></footer>
+	<header class="header">
+		<div class="header__time">
+			<i class="far fa-clock"></i>
+			<time datetime class="time__current-time" id="current-time"></time>
+		</div>
+		<div class="header__logo">
+			
+		</div>
+		<div class="header__login">
+			
+		</div>
+	</header>
+	<main class="main">
+		<button class="main__button">+ Add new pizza</button>
+		<div class="main__item">
+			<div class="item__pic"></div>
+			<div class="item__order-time"></div>
+			<div class="item__number-in-queue"></div>
+			<div class="item__eta"></div>
+			<div class="item__price"></div>
+		</div>
+	</main>
+	<footer class="footer">
+		<address class="footer__address">
+			Kottans, Kottans Str. 1,
+			<a href="tel:5778887">tel. 57-788-87</a>
+		</address>
+		<span class="footer__copyright">Pizza Manager &copy; 2018</span>
+	</footer>
+
 	<script src="js/script.js"></script>
 </body>
 </html>
