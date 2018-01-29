@@ -12,11 +12,11 @@
 <body>
 
 	<header>
-		<button name="go back" class="button"><i class="fas fa-long-arrow-alt-left"></i> Go back</button>
+		<button type="button" name="go back" class="button"><i class="fas fa-long-arrow-alt-left"></i> Go back</button>
 		<div class="logo-wrapper">
 			<a href="#"><div class="logo"></div></a>
 		</div>
-		<button name="sign in" class="button"><i class="fas fa-user"></i> Sign in</button>
+		<button type="button" name="sign in" class="button"><i class="fas fa-user"></i> Sign in</button>
 	</header>
 
 	<form>
@@ -50,8 +50,8 @@
 				</div>
 
 				<div class="order-buttons-block">
-					<button name="Place order" class="button button-accent">Place order</button>
-					<button name="Print a quote<" class="button">Print a quote</button>
+					<button type="button" name="Place order" class="button button-accent">Place order</button>
+					<button type="button" name="Print a quote<" class="button">Print a quote</button>
 				</div>
 			</div>
 
@@ -128,13 +128,17 @@
 									<td><i class="fas fa-file-alt"></i>business_operations.docx</td>
 									<td>78kb</td>
 									<td>842</td>
-									<td><i class="fas fa-trash"></i></td>
+									<td>
+										<button type="button" class="button__remove"><i class="fas fa-trash"></i></button>
+									</td>
 								</tr>
 								<tr>
 									<td><i class="fas fa-file-alt"></i>business_financial.docx</td>
 									<td>26kb</td>
 									<td>2,326</td>
-									<td><i class="fas fa-trash"></i></td>
+									<td>
+										<button type="button" class="button__remove"><i class="fas fa-trash"></i></button>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -179,9 +183,8 @@
 							</select>
 						</div>
 		
-						<i class="fas fa-trash"></i>
-
-						<button class="button" id="add-language"><span>+</span> Add</button>
+						<button type="button" class="button__remove"><i class="fas fa-trash"></i></button>
+						<button type="button" class="button" id="add-language"><span>+</span> Add</button>
 					
 					</div>
 
@@ -333,8 +336,8 @@
 							<label><input type="checkbox" value="" name="checkbox" id="checkbox">
 							I agree to the <a href="">Terms &amp; Conditions</a></label>
 
-							<button name="Place order" class="button button-accent">Place order</button>
-							<button name="Print a quote<" class="button">Print a quote</button>					
+							<button type="button" name="Place order" class="button button-accent">Place order</button>
+							<button type="button" name="Print a quote<" class="button">Print a quote</button>
 					</div>
 				</fieldset>
 
