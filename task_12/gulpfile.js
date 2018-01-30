@@ -32,9 +32,9 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('sass', function() {
-	return gulp.src('app/sass/**/*.sass')
+	return gulp.src('app/sass/*.scss')
 	.pipe(sourcemaps.init())
-	.pipe(sass().on("error", notify.onError()))
+	.pipe(sass({outputStyle: 'expanded'}).on("error", notify.onError()))
 	.pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '../sass/'}))
 	// .pipe(rename({suffix: '.min', prefix : ''}
 	// .pipe(autoprefixer(['last 15 versions']))
@@ -44,7 +44,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('watch', ['sass'/*, 'scripts'*/, 'browser-sync'], function() {
-	gulp.watch('app/sass/*.sass', ['sass']);
+	gulp.watch('app/sass/*.scss', ['sass']);
 	// gulp.watch(['app/js/script.js'], ['scripts']);
 	gulp.watch(['app/js/*.js'], browserSync.reload);
 	gulp.watch('app/*.html', browserSync.reload);
