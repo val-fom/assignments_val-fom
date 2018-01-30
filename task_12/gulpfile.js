@@ -2,6 +2,7 @@
 
 const gulp 					 = require('gulp'),
 			sass           = require('gulp-sass'),
+			sourcemaps     = require('gulp-sourcemaps'),
 			browserSync    = require('browser-sync'),
 			concat         = require('gulp-concat'),
 			uglify         = require('gulp-uglify'),
@@ -32,8 +33,10 @@ gulp.task('browser-sync', function() {
 
 gulp.task('sass', function() {
 	return gulp.src('app/sass/**/*.sass')
+	.pipe(sourcemaps.init())
 	.pipe(sass().on("error", notify.onError()))
-	// .pipe(rename({suffix: '.min', prefix : ''}))
+	.pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '../sass/'}))
+	// .pipe(rename({suffix: '.min', prefix : ''}
 	// .pipe(autoprefixer(['last 15 versions']))
 	// .pipe(cleanCSS())
 	.pipe(gulp.dest('app/css'))
