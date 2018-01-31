@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "reset";
+@import "variables";
+@import "../libs/fontawesome/fontawesome.scss";
+@import "../libs/fontawesome/fa-regular.scss";
+@import "../libs/fontawesome/fa-solid.scss";
+
+html {
+  box-sizing: border-box;
+  min-width: 320px;
+  font-size: 10px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: #{$font}, sans-serif;
+	min-height: 100vh;
+}
+
+.header {
+	background-color: $orangeRed;
+}
+
+.header__container {
+	max-width: 1170px;
+	padding: 0 1.5rem;
+	margin: auto;
+	height: 10rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	justify-items: center;
+}
+
+.logo__img {
+	width: 10rem;
+	margin: auto;
+}
+
+.main__button {
+	display: block;
+	margin: auto;
+	background-color: $green;
+	padding: 1rem;
+	text-transform: uppercase;
+	color: $yellow;
+	color: #fff;
+}
+
+.main {
+	background-color: $yellow;
+	padding: 3rem 0;
+}
+
+
+.main__container {
+	max-width: 1170px;
+	padding: 3rem 1.5rem;
+	margin: auto;
+	width: 100%;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 1rem;
+}
+
+.main__item {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "pic pic";
+
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 1rem;
+	padding: 1rem;
+
+	
+	transition: $transition;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.75);
+	}
+}
+
+.item__pic {
+	max-width: 300px;
+	width: 100%;
+	margin: auto;
+	grid-area: pic;
+}
+
+.footer {
+	background-color: $brown;
+}
+
+.footer__container {
+	max-width: 1170px;
+	padding: 0 1.5rem;
+	margin: auto;
+	height: 10rem;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	justify-items: center;
+}
+
+.footer__address {
+	grid-column: 1
+}
+
+.footer__copyright {
+	grid-column: 3
+}
+
+
+
+
+
+
+
+
+
+
