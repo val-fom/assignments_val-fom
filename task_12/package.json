@@ -1,22 +1,11 @@
 {
   "name": "task_12",
   "version": "1.0.0",
-  "description": "https://github.com/kottans/frontend/blob/master/test12.md",
-  "main": "gulpfile.js",
+  "description": "SPA as part of kottans/frontend course ",
+  "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/val-fom/assignments_val-fom.git"
-  },
-  "author": "val-fom",
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.23.6",
-    "gulp": "^3.9.1",
-    "gulp-notify": "^3.2.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4"
-  }
+  "author": "@val-fom",
+  "license": "MIT"
 }
