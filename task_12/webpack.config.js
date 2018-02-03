@@ -10,8 +10,8 @@ module.exports = {
 
 	entry: {
 		app: [
-			'./src/main.js',
-			'./src/main.scss'
+		'./src/main.js',
+		'./src/main.scss'
 		]
 	},
 
@@ -20,51 +20,69 @@ module.exports = {
 		filename: '[name].js'
 	},
 
+	devtool: "source-map", 
+
 	module: {
 		rules: [
 
-			{
-				test: /\.s[ac]ss$/,
-				use: ExtractTextPlugin.extract({
-					use: ['css-loader', 'sass-loader'],
-					fallback: 'style-loader'
-				})
-			},
+		{
+			test: /\.s[ac]ss$/,
+			use: ExtractTextPlugin.extract({
+				use: [
+				{
+					loader: 'css-loader', options: {
+						sourceMap: true
+					}
+				},
+				{
+					loader: 'sass-loader', options: {
+						sourceMap: true
+					}
+				}
+				],
+				fallback: 'style-loader'
+			})
+		},
 
-			{ 
-				test: /\.js$/, 
-				exclude: /node_modules/, 
-				loader: "babel-loader"
-			}
+		{
+			test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+			loader: 'file-loader?name=fonts/[name].[ext]'
+		},
+
+		{ 
+			test: /\.js$/, 
+			exclude: /node_modules/, 
+			loader: "babel-loader"
+		}
 
 		]
 	},
 
 	plugins: [
 
-		new ExtractTextPlugin("[name].css"),
+	new ExtractTextPlugin("[name].css"),
 
-		new webpack.LoaderOptionsPlugin({
-			minimize: inProduction
-		}),
+	new webpack.LoaderOptionsPlugin({
+		minimize: inProduction
+	}),
 
-		new HtmlWebpackPlugin({
-			template: 'src/index.html'
-		}),
+	new HtmlWebpackPlugin({
+		template: 'src/index.html'
+	}),
 
-		new CopyWebpackPlugin([
-			{
-				from: 'assets',
-				to: ''
-			}
-		])
+	new CopyWebpackPlugin([
+	{
+		from: 'assets',
+		to: ''
+	}
+	])
 
 	]
 };
 
 if (inProduction) {
 	module.exports.plugins.push(
-			new webpack.optimize.UglifyJsPlugin()
+		new webpack.optimize.UglifyJsPlugin()
 		)
 }
 
