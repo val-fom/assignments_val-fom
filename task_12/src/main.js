@@ -2,12 +2,9 @@
 
 function getTime() {
 	const now = new Date();
-	let ss = now.getSeconds();
-		if (ss < 10) ss = '0' + ss;
-	let mm = now.getMinutes();
-		if (mm < 10) mm = '0' + mm;
-	let hh = now.getHours();
-		if (hh < 10) hh = '0' + hh;
+	const ss = now.getSeconds().toString().padStart(2, '0');
+	const mm = now.getMinutes().toString().padStart(2, '0');
+	const hh = now.getHours().toString().padStart(2, '0');
 
 	return `${hh}:${mm}:${ss}`;
 }
