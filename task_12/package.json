@@ -13,7 +13,7 @@
 			"env"
 		]
 	},
-	"author": "@val-fom",
+	"author": "Valentyn Fomenko <fomenkovalentyn@gmail.com> (https://github.com/val-fom)",
 	"license": "MIT",
 	"devDependencies": {
 		"babel-core": "^6.26.0",
