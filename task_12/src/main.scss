@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-@import "reset";
+@import "fonts";
 @import "variables";
-
-$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome.scss";
+@import "reset";
 
 .button {
 	border: none;
