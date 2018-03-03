@@ -65,13 +65,13 @@ export default class App extends Component {
 
 	onSearchSubmit(city) {
 		this.udateCityResponse(city)
-			.then(({ city, units }) => pushHistoryState({ city, units }))
+			.then(pushHistoryState)
 			.catch(console.error);
 	}
 
 	onUnitsToggle(units) {
 		this.udateCityResponse(undefined, units)
-			.then(({ city, units }) => pushHistoryState({ city, units }));
+			.then(pushHistoryState);
 	}
 
 	onPopHistoryState(city, units) {
