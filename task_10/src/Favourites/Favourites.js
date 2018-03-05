@@ -7,8 +7,9 @@ export default class Favourites extends Component {
 		super(props);
 
 		this.state = {
-			list: this.getFromLocalStorage()
+			list: this.getFromLocalStorage('favourites')
 		}
+		console.log('fav', this.state);
 		this.host = document.createElement('div');
 		this.host.classList.add('favourites__container');
 		this.ul = document.createElement('ul');
@@ -37,10 +38,11 @@ export default class Favourites extends Component {
 
 	render() {
 		this.ul.innerHTML = '';
-		for (var i = this.state.list.length - 1; i >= 0; i--) {
+		const list = new Set(this.state.list);
+		for (let city of Array.from(list).reverse()) {
 			const li = `
 				<li class="favourites__city">
-					<a href="#">${this.state.list[i]}</a>
+					<a href="#">${city}</a>
 				</li>
 			`;
 			this.ul.insertAdjacentHTML('beforeend', li);
@@ -49,18 +51,20 @@ export default class Favourites extends Component {
 	}
 
 	add(item) {
-		const list = this.state.list.slice();
-		let index = list.indexOf(item);
-		if (item === list[list.length - 1]) return;
-		if (~index) list.splice(index, 1);
-		list.push(item);
-		localStorage['favourites'] = JSON.stringify(list);
-		this.updateState({ list: list });
+		const list = new Set(this.state.list);
+		if (list.has(item)) list.delete(item);
+		list.add(item);
+		this.setToLocalStorage('favourites', list);
+		this.updateState({ list });
 	}
 
-	getFromLocalStorage() {
-		return (localStorage['favourites']) ?
-			JSON.parse(localStorage['favourites']) : [];
+	getFromLocalStorage(key) {
+		return (localStorage[key]) ?
+			JSON.parse(localStorage[key]) : [];
+	}
+
+	setToLocalStorage(key, set) {
+		localStorage[key] = JSON.stringify(Array.from(set));
 	}
 
 	clear() {
