@@ -103,10 +103,12 @@ export default class App extends Component {
 		return { isFound: false };
 	}
 
+	componentsStateWillUpdate(nextState) {
+		if (nextState.city !== this.state.city) setCityTitle(nextState.city);
+	}
+
 	render() {
 		const { city, weatherResponse, forecastResponse, isFound } = this.state;
-
-		setCityTitle(city); //life cicle components
 
 		return [
 			this.header.update(),
