@@ -87,7 +87,7 @@ export default class App extends Component {
 			.catch(console.error);
 	}
 
-	computeNextState( [weatherResponse, forecastResponse, units] ) {
+	computeNextState({ weatherResponse, forecastResponse, units }) {
 		const city = `${weatherResponse.name},${weatherResponse.sys.country}`;
 		return {
 			weatherResponse,
