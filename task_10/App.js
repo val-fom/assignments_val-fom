@@ -64,21 +64,23 @@ export default class App extends Component {
 	}
 
 	onSearchSubmit(city) {
-		this.udateCityResponse(city)
+		this.udateCityResponse({ city })
 			.then(pushHistoryState)
 			.catch(console.error);
 	}
 
 	onUnitsToggle(units) {
-		this.udateCityResponse(undefined, units)
+		this.udateCityResponse({ units })
 			.then(pushHistoryState);
 	}
 
 	onPopHistoryState(city, units) {
-		this.udateCityResponse(city, units);
+		this.udateCityResponse({ city, units });
 	}
 
-	udateCityResponse(city = this.state.city, units = this.state.units) {
+	udateCityResponse({ city, units }) {
+		city = city || this.state.city;
+		units = units || this.state.units;
 		return getAll(city, units)
 			.then(this.computeNextState, this.computeNotFoundState)
 			.then(this.updateState)
@@ -104,7 +106,7 @@ export default class App extends Component {
 	render() {
 		const { city, weatherResponse, forecastResponse, isFound } = this.state;
 
-		setCityTitle(city);
+		setCityTitle(city); //life cicle components
 
 		return [
 			this.header.update(),
