@@ -1,6 +1,6 @@
 require('./src/scss/app.scss');
 
-import getAll from './src/utils/api';
+import getAllForecast from './src/utils/api';
 import findCity from './src/utils/api';
 import { getCityFromUrl, setCityTitle, pushHistoryState } from './src/utils';
 
@@ -81,7 +81,7 @@ export default class App extends Component {
 	udateCityResponse({ city, units }) {
 		city = city || this.state.city;
 		units = units || this.state.units;
-		return getAll(city, units)
+		return getAllForecast(city, units)
 			.then(this.computeNextState, this.computeNotFoundState)
 			.then(this.updateState)
 			.catch(console.error);

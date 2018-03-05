@@ -19,7 +19,7 @@ const getForecast = (city, units) => get('forecast', units, city);
 
 export const findCity = (city, units) => get('find', units, city);
 
-const getAll = (city, units) =>
+const getAllForecast = (city, units) =>
 	Promise.all([ getWeather(city, units), getForecast(city, units), units, city ]);
 
-export default getAll;
+export default getAllForecast;
