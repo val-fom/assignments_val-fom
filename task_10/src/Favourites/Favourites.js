@@ -19,9 +19,9 @@ export default class Favourites extends Component {
 
 		this.addButton = document.createElement('button');
 		this.addButton.classList.add('favourites__add-button', 'button');
-		this.addButton.addEventListener('click', () => {
-			if (this.props) this.add(this.props.city);
-		});
+		this.addButton.addEventListener('click', () =>
+			this.add(this.props.city)
+		);
 		this.addButton.innerHTML = '<i>+</i>';
 		this.addButton.title = 'add to favourites';
 		this.host.appendChild(this.addButton);
