@@ -60,7 +60,6 @@ export default class Search extends Component {
 		this.input.dataset.isValid = isValid;
 		this.input.value = city;
 
-		console.log(this.state, this.props);
 		return this.form;
 	}
 }

@@ -99,7 +99,6 @@ export default class App extends Component {
 	}
 
 	computeNotFoundState() {
-		console.error('App.state.isFound: false');
 		return { isFound: false };
 	}
 
