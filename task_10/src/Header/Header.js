@@ -12,7 +12,7 @@ export default class Header extends Component {
 
 	render() {
 		return `
-			<header class="header">
+			<header>
 				<h1 class="header__heading">Weather App</h1>
 			</header>
 		`;

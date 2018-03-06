@@ -1,4 +1,4 @@
-require('./src/scss/app.scss');
+import './src/scss/app.scss';
 
 import getAllForecast from './src/utils/api';
 import findCity from './src/utils/api';
