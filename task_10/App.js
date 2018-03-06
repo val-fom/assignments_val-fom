@@ -1,6 +1,6 @@
-require('./src/scss/app.scss');
+import './src/scss/app.scss';
 
-import getAll from './src/utils/api';
+import getAllForecast from './src/utils/api';
 import findCity from './src/utils/api';
 import { getCityFromUrl, setCityTitle, pushHistoryState } from './src/utils';
 
@@ -64,28 +64,30 @@ export default class App extends Component {
 	}
 
 	onSearchSubmit(city) {
-		this.udateCityResponse(city)
-			.then(({ city, units }) => pushHistoryState({ city, units }))
+		this.udateCityResponse({ city })
+			.then(pushHistoryState)
 			.catch(console.error);
 	}
 
 	onUnitsToggle(units) {
-		this.udateCityResponse(undefined, units)
-			.then(({ city, units }) => pushHistoryState({ city, units }));
+		this.udateCityResponse({ units })
+			.then(pushHistoryState);
 	}
 
 	onPopHistoryState(city, units) {
-		this.udateCityResponse(city, units);
+		this.udateCityResponse({ city, units });
 	}
 
-	udateCityResponse(city = this.state.city, units = this.state.units) {
-		return getAll(city, units)
+	udateCityResponse({ city, units }) {
+		city = city || this.state.city;
+		units = units || this.state.units;
+		return getAllForecast(city, units)
 			.then(this.computeNextState, this.computeNotFoundState)
 			.then(this.updateState)
 			.catch(console.error);
 	}
 
-	computeNextState( [weatherResponse, forecastResponse, units] ) {
+	computeNextState({ weatherResponse, forecastResponse, units }) {
 		const city = `${weatherResponse.name},${weatherResponse.sys.country}`;
 		return {
 			weatherResponse,
@@ -97,14 +99,15 @@ export default class App extends Component {
 	}
 
 	computeNotFoundState() {
-		console.error('App.state.isFound: false');
 		return { isFound: false };
+	}
+
+	componentsStateWillUpdate(nextState) {
+		if (nextState.city !== this.state.city) setCityTitle(nextState.city);
 	}
 
 	render() {
 		const { city, weatherResponse, forecastResponse, isFound } = this.state;
-
-		setCityTitle(city);
 
 		return [
 			this.header.update(),

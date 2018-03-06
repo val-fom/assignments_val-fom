@@ -19,7 +19,17 @@ const getForecast = (city, units) => get('forecast', units, city);
 
 export const findCity = (city, units) => get('find', units, city);
 
-const getAll = (city, units) =>
-	Promise.all([ getWeather(city, units), getForecast(city, units), units, city ]);
+const getAllForecast = (city, units) => {
+	return Promise.all([
+			getWeather(city, units),
+			getForecast(city, units),
+			units
+		])
+		.then(([weatherResponse, forecastResponse, units]) => ({
+			weatherResponse,
+			forecastResponse,
+			units
+		}));
+};
 
-export default getAll;
+export default getAllForecast;

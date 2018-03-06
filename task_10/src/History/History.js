@@ -1,13 +1,13 @@
 require('./History.scss')
 
-import { Component } from '../Framework'
+import Favourites from '../Favourites'
 
-export default class History extends Component {
+export default class History extends Favourites {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			list: this.getFromLocalStorage()
+			list: this.getFromLocalStorage('history')
 		}
 		this.host = document.createElement('div');
 		this.host.classList.add('history__container');
@@ -20,8 +20,9 @@ export default class History extends Component {
 
 		this.clearButton = document.createElement('button');
 		this.clearButton.classList.add('history__clear-button', 'button');
-		this.clear = this.clear.bind(this);
-		this.clearButton.addEventListener('click', this.clear);
+		this.clearButton.addEventListener('click', () => {
+			this.clear('history');
+		});
 		this.clearButton.innerHTML = '<i>+</i>';
 		this.clearButton.title = 'clear history'
 		this.host.appendChild(this.clearButton);
@@ -29,10 +30,12 @@ export default class History extends Component {
 
 	render() {
 		this.ul.innerHTML = '';
-		for (var i = this.state.list.length - 1; i >= 0; i--) {
+		const list = this.state.list;
+		for (var i = list.length - 1; i >= 0; i--) {
+			const city = list[i];
 			const li = `
 				<li class="history__city">
-					<a href="#">${this.state.list[i]}</a>
+					<a href="#">${city}</a>
 				</li>
 			`;
 			this.ul.insertAdjacentHTML('beforeend', li);
@@ -41,32 +44,6 @@ export default class History extends Component {
 	}
 
 	beforeUpdate({ city }) {
-		this.add(city);
-	}
-
-	add(item) {
-		const list = this.state.list.slice();
-		let index = list.indexOf(item);
-		if (~index) list.splice(index, 1);
-		list.push(item);
-		localStorage['history'] = JSON.stringify(list);
-		this.updateState({ list: list });
-	}
-
-	getFromLocalStorage() {
-		return (localStorage['history']) ?
-			JSON.parse(localStorage['history']) : [];
-	}
-
-	clear() {
-		localStorage['history'] = "[]";
-		this.updateState({ list: [] });
-	}
-
-	handleClick(ev) {
-		if (ev.target.tagName !== 'A') return;
-		ev.preventDefault();
-		const city = ev.target.innerHTML;
-		this.props.onClick(city);
+		this.add(city, 'history');
 	}
 }

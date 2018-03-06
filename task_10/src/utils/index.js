@@ -11,8 +11,7 @@ export const pushHistoryState = ({ city, units }) => {
 }
 
 export const setCityTitle = (city) => {
-	const newTitle = `Weather App - ${city}`;
-	if (document.title !== newTitle) document.title = newTitle;
+	document.title = `Weather App - ${city}`;
 }
 
 export const getHours = (dt) => {

@@ -13,7 +13,7 @@ export default class Footer extends Component {
 
 	render() {
 		return `
-<footer class="footer">
+<footer>
 	<a href="https://github.com/val-fom/weather-app"
 		class="footer__link footer__link-gh">
 		${octicons['mark-github'].toSVG({ "width": 19.2 })}

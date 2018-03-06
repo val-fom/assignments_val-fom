@@ -8,7 +8,10 @@ class Component {
 		this.updateState = this.updateState.bind(this);
 	}
 
+	componentsStateWillUpdate(nextState) {}
+
 	updateState(nextState) {
+		this.componentsStateWillUpdate(nextState);
 		this.state = { ...this.state, ...nextState };
 		this._render();
 		// console.log(this.constructor.name + ': _state_ updated:', this.state);
