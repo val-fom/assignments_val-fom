@@ -9,19 +9,19 @@ export default class Favourites extends Component {
 		this.state = {
 			list: this.getFromLocalStorage('favourites')
 		}
-		console.log('fav', this.state);
 		this.host = document.createElement('div');
 		this.host.classList.add('favourites__container');
 		this.ul = document.createElement('ul');
 		this.ul.classList.add('favourites');
 		this.host.appendChild(this.ul);
+
 		this.handleClick = this.handleClick.bind(this);
 		this.ul.addEventListener('click', this.handleClick);
 
 		this.addButton = document.createElement('button');
 		this.addButton.classList.add('favourites__add-button', 'button');
 		this.addButton.addEventListener('click', () =>
-			this.add(this.props.city)
+			this.add(this.props.city, 'favourites')
 		);
 		this.addButton.innerHTML = '<i>+</i>';
 		this.addButton.title = 'add to favourites';
@@ -29,17 +29,18 @@ export default class Favourites extends Component {
 
 		this.clearButton = document.createElement('button');
 		this.clearButton.classList.add('favourites__clear-button', 'button');
-		this.clearButton.addEventListener('click', () => this.clear() );
+		this.clearButton.addEventListener('click', () =>
+			this.clear('favourites'));
 		this.clearButton.title = 'clear favourites'
-
 		this.clearButton.innerHTML = '<i>+</i>';
 		this.host.appendChild(this.clearButton);
 	}
 
 	render() {
 		this.ul.innerHTML = '';
-		const list = new Set(this.state.list);
-		for (let city of Array.from(list).reverse()) {
+		const list = this.state.list;
+		for (var i = list.length - 1; i >= 0; i--) {
+			const city = list[i];
 			const li = `
 				<li class="favourites__city">
 					<a href="#">${city}</a>
@@ -50,12 +51,12 @@ export default class Favourites extends Component {
 		return [this.ul, this.addButton, this.clearButton];
 	}
 
-	add(item) {
+	add(item, key) {
 		const list = new Set(this.state.list);
 		if (list.has(item)) list.delete(item);
 		list.add(item);
-		this.setToLocalStorage('favourites', list);
-		this.updateState({ list });
+		localStorage[key] = JSON.stringify([...list]);
+		this.updateState({ list: [...list] });
 	}
 
 	getFromLocalStorage(key) {
@@ -63,12 +64,8 @@ export default class Favourites extends Component {
 			JSON.parse(localStorage[key]) : [];
 	}
 
-	setToLocalStorage(key, set) {
-		localStorage[key] = JSON.stringify(Array.from(set));
-	}
-
-	clear() {
-		localStorage['favourites'] = "[]";
+	clear(key) {
+		localStorage.removeItem(key);
 		this.updateState({ list: [] });
 	}
 
