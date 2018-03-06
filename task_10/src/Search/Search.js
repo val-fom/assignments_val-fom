@@ -8,9 +8,8 @@ export default class Search extends Component {
 
 		this.state = {
 			isValid: true,
+			inputValue: null,
 		};
-
-		this.inputValue = null;
 
 		this.host = document.createElement('div');
 		this.host.classList.add('search__container');
@@ -44,20 +43,18 @@ export default class Search extends Component {
 		if (!inputValue) {
 			this.updateState({ isValid: false });
 		} else {
-			this.updateState({ isValid: true });
-			this.inputValue = inputValue;
+			this.updateState({ isValid: true, inputValue });
 			this.props.onSubmit(inputValue);
 		}
 	}
 
 	render() {
-		const { isFound } = this.props;
-		let { isValid } = this.state;
+		let { isFound, city } = this.props;
+		let { isValid, inputValue } = this.state;
 		isValid = isValid && isFound;
 
-		let { city } = this.props;
 		if (!isFound) {
-			city = `city \'${this.inputValue}\' not found`;
+			city = `city \'${inputValue}\' not found`;
 		}
 
 		this.input.dataset.isValid = isValid;
