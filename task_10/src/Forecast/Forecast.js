@@ -31,9 +31,9 @@ export default class Forecast extends Component {
 	}
 
 	render() {
-		if (!this.props.forecastResponse) return '';
-
 		const { forecastResponse } = this.props;
+
+		if (!forecastResponse) return '';
 
 		this.forecast.innerHTML = '';
 		for (var i = forecastResponse.list.length - 1; i >= 0; i--) {
