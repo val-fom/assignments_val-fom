@@ -55,9 +55,7 @@ export default class App extends Component {
 		this.footer = new Footer();
 
 		window.onpopstate = ev => {
-			if (ev.state) {
-				this.onPopHistoryState(ev.state.city, ev.state.units);
-			}
+			this.onPopHistoryState(ev.state.city, ev.state.units);
 		}
 
 		this.onSearchSubmit();
