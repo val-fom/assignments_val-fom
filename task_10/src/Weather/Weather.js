@@ -14,8 +14,7 @@ export default class Weather extends Component {
 	render() {
 		if (!this.props.weatherResponse) return '';
 
-		const { weatherResponse } = this.props;
-		const { city } = this.props;
+		const { weatherResponse, city } = this.props;
 		const icons = getIcons(weatherResponse.weather);
 		const temp = weatherResponse.main.temp.toFixed(0);
 

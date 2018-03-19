@@ -55,30 +55,28 @@ export default class App extends Component {
 		this.footer = new Footer();
 
 		window.onpopstate = ev => {
-			if (ev.state) {
-				this.onPopHistoryState(ev.state.city, ev.state.units);
-			}
+			this.onPopHistoryState(ev.state.city, ev.state.units);
 		}
 
 		this.onSearchSubmit();
 	}
 
 	onSearchSubmit(city) {
-		this.udateCityResponse({ city })
+		this.updateCityResponse({ city })
 			.then(pushHistoryState)
 			.catch(console.error);
 	}
 
 	onUnitsToggle(units) {
-		this.udateCityResponse({ units })
+		this.updateCityResponse({ units })
 			.then(pushHistoryState);
 	}
 
 	onPopHistoryState(city, units) {
-		this.udateCityResponse({ city, units });
+		this.updateCityResponse({ city, units });
 	}
 
-	udateCityResponse({ city, units }) {
+	updateCityResponse({ city, units }) {
 		city = city || this.state.city;
 		units = units || this.state.units;
 		return getAllForecast(city, units)
