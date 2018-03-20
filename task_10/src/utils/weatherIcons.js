@@ -10,6 +10,6 @@ const getIcons = source => {
 				`title="${source[i].main}: ${source[i].description}"></i>`;
 		}
 		return icons;
-	}
+	};
 
 export default getIcons;

@@ -1,6 +1,6 @@
-import { Component } from '../Framework'
+import { Component } from '../Framework';
 
-require('./Search.scss')
+require('./Search.scss');
 
 export default class Search extends Component {
 	constructor(props) {
@@ -28,7 +28,7 @@ export default class Search extends Component {
 		this.button = document.createElement('button');
 		this.button.classList.add('button', 'search__button');
 		this.button.title = 'search';
-		this.button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>'
+		this.button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';
 
 		this.form.append(this.input, this.button);
 

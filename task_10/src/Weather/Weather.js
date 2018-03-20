@@ -1,6 +1,6 @@
-require('./Weather.scss')
+require('./Weather.scss');
 
-import { Component } from '../Framework'
+import { Component } from '../Framework';
 import getIcons from '../utils/weatherIcons';
 
 export default class Weather extends Component {
