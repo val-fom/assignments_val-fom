@@ -8,7 +8,7 @@ export default class Favourites extends Component {
 
 		this.state = {
 			list: this.getFromLocalStorage('favourites')
-		}
+		};
 		this.host = document.createElement('div');
 		this.host.classList.add('favourites__container');
 		this.ul = document.createElement('ul');
@@ -31,7 +31,7 @@ export default class Favourites extends Component {
 		this.clearButton.classList.add('favourites__clear-button', 'button');
 		this.clearButton.addEventListener('click', () =>
 			this.clear('favourites'));
-		this.clearButton.title = 'clear favourites'
+		this.clearButton.title = 'clear favourites';
 		this.clearButton.innerHTML = '<i>+</i>';
 		this.host.appendChild(this.clearButton);
 	}

@@ -1,7 +1,7 @@
-require('./Footer.scss')
-const octicons = require("octicons")
+require('./Footer.scss');
+const octicons = require("octicons");
 
-import { Component } from '../Framework'
+import { Component } from '../Framework';
 
 export default class Footer extends Component {
 	constructor() {

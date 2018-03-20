@@ -1,6 +1,6 @@
-require('./History.scss')
+require('./History.scss');
 
-import Favourites from '../Favourites'
+import Favourites from '../Favourites';
 
 export default class History extends Favourites {
 	constructor(props) {
@@ -8,7 +8,7 @@ export default class History extends Favourites {
 
 		this.state = {
 			list: this.getFromLocalStorage('history')
-		}
+		};
 		this.host = document.createElement('div');
 		this.host.classList.add('history__container');
 		this.ul = document.createElement('ul');
@@ -24,7 +24,7 @@ export default class History extends Favourites {
 			this.clear('history');
 		});
 		this.clearButton.innerHTML = '<i>+</i>';
-		this.clearButton.title = 'clear history'
+		this.clearButton.title = 'clear history';
 		this.host.appendChild(this.clearButton);
 	}
 
